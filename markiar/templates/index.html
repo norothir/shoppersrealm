@@ -1,0 +1,19 @@
+{% extends "skeleton.html" %}
+{% block content %}
+    <table>
+      <tr>
+        <td>Tuote</td>
+        <td>Hinta</td>
+        <td></td>
+{% for p in products %}
+     <tr>
+      <form action="{% url kauppa.views.kori %}" method="POST">{% csrf_token %}
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }}</td>
+        <td><input type="hidden" name="id" value="{{ p.id }}">
+            <input type="submit" value="Lisaa koriin"></td>
+      </form>
+    <tr>
+{% endfor %}
+    </table>
+{% endblock %}

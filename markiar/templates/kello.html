@@ -1,0 +1,7 @@
+<html>
+<div>
+	{{ user.username }} ({{ user.email }}) <a
+		href="{% url kello.views.logout %}">Logout</a>
+</div>
+<div>Kello on {% now "H:i:s" %}.</div>
+</html>

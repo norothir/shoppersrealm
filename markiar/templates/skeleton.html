@@ -1,0 +1,9 @@
+<html>
+<body>
+	<div id="top">
+		<a href="{% url kauppa.views.index %}">Tuotteet</a> | <a
+			href="{% url kauppa.views.kori %}">Ostoskori</a>
+	</div>
+	<div id="content">{% block content %} {% endblock %}</div>
+</body>
+</html>

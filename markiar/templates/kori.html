@@ -1,0 +1,17 @@
+{% extends "skeleton.html" %} {% block content %}
+{% if products %}
+<table>
+	{% for p in products %}
+	<tr>
+		<td>{{ p.name }}</td>
+		<td>{{ p.price }}</td>
+		<td>{{ p.number }}</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td></td>
+		<td></td>
+		<td>{{ total }}</td>
+	</tr>
+</table>
+{% endif %} {% endblock %}

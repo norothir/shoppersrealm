@@ -1,0 +1,39 @@
+{% block content %}
+<link rel="stylesheet" type="text/css" href="http://kauppa.mooo.com:8080/KauppaLista/resources/css/shoppinglist.css" />
+
+<h1>Data table</h1>
+
+
+<br/>
+<table class="order-table">
+<th class="order-table-header">ostamatta </th>
+<th class="order-table-header">Ostettava</th> 
+<th class="order-table-header"> luokka</th>
+<th class="order-table-header"> maara</th>
+<th class="order-table-header"> toiminto</th>
+{% for p in ostokset %}
+     <tr class="{% if forloop.counter|divisibleby:2 %}order-table-even-row{% else %}order-table-odd-row{% endif %}">
+      <form action="{% url ostokset.views.poista_ostos %}" method="POST">{% csrf_token %}
+        <td> <input type="checkbox" name="valittu" value = {{ p.active }}/>
+        <td>{{ p.item }}</td>
+        <td>{{ p.amount }}</td>
+        <td>{{ p.category }}</td>
+        <td><input type="hidden" name="id" value="{{ p.id }}">
+            <input type="submit" value="poista"></td>
+      </form>
+    </tr>
+    
+{% endfor %}
+</table>
+
+<h1>Lisaa uusi ostos</h1>
+<body>
+    <form action="/lisaa/" method="post">{% csrf_token %}
+    	
+        Tavara <input type="text" name="item"> <br/>
+        Maara <input type="text" name= "maara"><br/>
+        Luokka <input type ="text" name="category"><br/>
+        <input type="submit" value="Lisaa">
+    </form>
+</body>
+{% endblock %}
